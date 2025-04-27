@@ -1,0 +1,79 @@
+@font-face {
+    font-family: "Rubik";
+    src: url("./Rubik-VariableFont_wght.ttf");
+    font-style: normal;
+    font-weight: 300 900;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+header, main {
+    padding: 1em;
+}
+header {
+    width: 100%;
+    justify-content: space-between;
+    background-color: aliceblue;
+    border-bottom: .1em solid gainsboro;
+}
+main {
+    max-width: 50em;
+}
+header, ul {
+    display: flex;
+}
+
+nav ul li:not(:first-child)::before {
+    content: "|";
+    padding: 0 .5em;
+}
+h1, nav {
+    align-self: center;
+}
+
+h1, h2, p, li, a {
+    font-family: "Rubik";
+    line-height: 1.5;
+}
+h2, p {
+    padding-bottom: .25em;
+}
+
+h1, h2 {
+    font-weight: bold;
+}
+h1 {
+    font-size: 1rem;
+}
+h2 {
+    font-size: 2rem;
+    padding-top: 1em;
+}
+a {
+    color: dodgerblue;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 500px) {
+    nav ul li:not(:first-child)::before {
+        content: "";
+        padding: 0;
+    }
+    nav ul {
+        flex-direction: column;
+    }
+    nav ul li:not(:last-child) {
+        padding-bottom: .5em;
+    }
+}
+
