@@ -60,6 +60,9 @@ a {
     color: dodgerblue;
     text-decoration: none;
 }
+h1 > a {
+    color: midnightblue;
+}
 a:hover {
     text-decoration: underline;
 }
