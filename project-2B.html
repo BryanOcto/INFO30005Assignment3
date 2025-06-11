@@ -18,7 +18,152 @@
         </nav>
     </header>
     <main>
-        
+        <h2>Project 2 Part 2:<br> "Hobby Master" Conversation Design Chatbot for a Library of Things</h2>
+        <p>A chatbot that assists users in getting to know items in the library of things (for practical hobbies) and how to use them.</p>
+        <figure>
+            <img src="./images/assignment-2-part-2-banner--edited.jpg" alt="Group members Nicholas, Bryan, and Jake (from left to right) discussing the themes of common chatbot roles we brainstormed.">
+            <figcaption>Rapid prototyping of chatbot role ideas within the Library of Things service. Image courtesy of other group members.</figcaption>
+        </figure>
+
+        <h3>Problem and context</h3>
+        <p>Starting a new practical hobby can be very daunting due to not knowing where to start and the steep learning curve. Additionally, the busyness of university life for university students often leaves little time for practical hobbies.</p>
+        <p>Many university students have desires to explore and do certain practical hobbies, whether for enjoyment or to connect with others (I am certainly one of them!). However, many hobbies take a long time to do, and it can be difficult to know where to start, due to how complicated and technical some practical hobbies can get (for example, photography). This results in university students not trying new practical hobbies (that is me too!), which not only can impact their wellbeing but also reduce opportunities to connect with like-minded people, as hobbies are often a medium to bond with others.</p>
+        <p>Thus the second part of this assignment explores how a chatbot could help students get started with practical hobbies in the context of a Library of Things (LoT). Specifically, we explore how a chatbot could act as a digital “hobby master” discussed in the previous part of this assignment, helping students get to know about items in the library and how to use them. this way, students can start doing practical hobbies, and thus bond with others who have similar ones, potentially improving their wellbeing.</p>
+        <blockquote>A chatbot in the Library of Things can familiarise students with the items in the library and how to use them, helping them get started with practical hobbies they've always wanted to do.</blockquote>
+
+        <h3>Roles and contributions</h3>
+        <ul>
+            <li>
+                The team consisted of the following members:
+                <ul>
+                    <li>Bryan Susanto (Conversation designer, Feedback and conversation flow) <-- this is me!</li>
+                    <li>Nicholas Kurniasurja (Conversation designer, Persona design and conversation flow)</li>
+                    <li>Jake De Andrade (Conversation designer, Voiceflow and Figma prototypes)</li>
+                    <li>Jesslyn Andriono (Conversation designer, Accessibility review and conversation structure)</li>
+                </ul>
+            </li>
+            <li>Timeline: May - June 2025 (a little over 1 month)</li>
+            <li>Platform: A chatbot meant to be used in the Library of Things' website.</li>
+        </ul>
+        <p>Most of the design process was done collaboratively, however one particular aspect where I was the majority contributor was in collecting and synthesizing feedback, in particular using feedback grids to do that in the report. Although we ourselves are students and thus part of the target audience, we are likely to overlook several needs and impose our own biases from our preferences, and are likely to be more familiar with the idea and expected flow of the conversation compared to users. Thus it is important to collect and consolidate feedback so we can act upon it.</p>
+        <p>I also created the mock item catalogue in Airtable for the chatbot to get item information from using the Airtable API in Voiceflow; more on that in <a href="#airtable-section">the corresponding section</a>.</p>
+
+        <h3>Design principles</h3>
+        <p>The following design principles guided the design of this chatbot to assist in our library of things service:</p>
+        <ul>
+            <li><b>Iterative</b>: Conversations are very-open ended, thus it is very likely that the conversation that we envisioned deviates from what users expect. Therefore we performed many iterations as a team, gathering as much feedback as possible from others.</li>
+            <li><b>Robust</b>: Despite not being able to cover every possible case of conversations due to their open-endedness, we must strive to design them to handle as many cases as possible and have a catch-all in the end or gracefully exit if the chatbot can't handle the case.</li>
+        </ul>
+
+        <h3>Key steps, decisions, and pivots</h3>
+        <p>This section outlines the main stages and pivots our team took throughout the project as we iterate based on feedback. This only includes parts that I contributed to; for other steps please refer to the portfolios of other team members listed previously.</p>
+
+        <h4>Divergent thinking: Rapid prototyping</h4>
+        <p>Before prototyping anything, the first step we must do is to decide what role the chatbot would play within the library of things service we designed in the previous assignment. We did this by brainstorming as many ideas as possible in a rapid-prototyping session, doing this individually to avoid ideas being overpowered by dominant voices in the conversation. Then, we grouped ideas based on common themes to identify the most common roles we brainstormed, and ranked them in an idea portfolio based on (positive) impact and feasibility. Two main ideas emerged, namely:</p>
+        <ol>
+            <li>The “hobby master” helping people use an item and/or finding items to borrow for a hobby.</li>
+            <li>The “hobby master” helping users find hobbies they're interested in.</li>
+        </ol>
+
+        <figure>
+            <img src="./images/INFO30005 A2P2 Idea Portfolio--iteration-1.png" alt="Idea portfolio ranking different chatbot concept ideas based on two criteria: 1. (positive) impact on the vertical axis and 2. feasibility on the horizontal axis.">
+            <figcaption>Idea portfolio for the candidate chatbot roles.</figcaption>
+        </figure>
+
+        <p>With our best ideas on the chatbot role, we presented them to others for feedback, and I consolidated such feedback in a feedback grid. The main insight we got was that there was no clear preference to either role, with different people giving contradicting feedback regarding which one they would find more valuable. In the end, the team ended up going with the role of the “hobby master” helping the users familiarise themselves with items in the library and how to use them, as it was the most specific to our library, thus providing the most value compared to widely available generic AI/LLMs.</p>
+
+        <figure>
+            <img src="./images/INFO30005 A2P2 Feedback grid--iteration1.png" alt="Feedback grid for the chatbot concept ideas, whose main insights are summarised before.">
+            <figcaption>Feedback grid summarising the feedback we received on our chatbot roles. Design inspired by Jake's feedback grid designs from the previous part of this assignment.</figcaption>
+        </figure>
+
+        <h4>Conversation design: chatbot flow</h4>
+        <p>With the role mostly decided, we started drafting out what the conversation between the chatbot and user could look like. We tested them with two Wizard of Oz tests with others, where we acted as the chatbot according to the script and others act as the users of the chatbot. This helps us identify whether the chatbot acts as the user expects or whether we were missing some steps in our conversation.</p>
+        <p>Like before, I then compiled the feedback into a feedback grid. The main insight we got was how at the beginning of the conversation, users were confused at what the chatbot could do within the context of our library of things service. Thus, users suggested e.g. adding buttons as options on what the users can ask the chatbot, or some other way of informing the user of the capabilities of the chatbot.</p>
+
+        <figure>
+            <img src="./images/INFO30005 A2P2 Feedback grid--iteration2--combined.png" alt="Feedback grid for the chatbot script/flow, whose main insights are summarised before.">
+            <figcaption>Feedback grid summarising the feedback we received on initial drafts of our chatbot roles. Design inspired by Jake's feedback grid designs from the previous part of this assignment.</figcaption>
+        </figure>
+
+        <p>With that feedback, I created a final version of the chatbot conversation flow in FigJam. This tool was recommended by fellow groupmates, especially Jake, and it turns out it was a very convenient tool to create flowcharts! Here, I drafted both happy paths and unhappy paths, and used squares for chatbot responses/messages, hexagons for user utterances, and diamonds for if-then decisions. Unhappy paths are where things don't go as expected, and I drafted out ways the chatbot will attempt to recover the error if possible, and when it should gracefully exit if that is not possible. Jesslyn later on annotated the happy path with conversation sequences, which also identified some missing parts of the conversation that I drafted, such as C3 capabilities where the chatbot informs of the user of what it could do for the user.</p>
+
+        <figure>
+            <img src="./images/INFO30005 A2P2 Chatbot flow--happy-path.png" alt="Chatbot happy path created in FigJam.">
+            <figcaption>The happy path I drafted out, including conversation sequence annotations by Jesslyn.</figcaption>
+        </figure>
+        <figure>
+            <figcaption>The various unhappy paths I drafted out, including common errors and how the chatbot handles them (whether it recovers if it can or gracefully exists if it can't).</figcaption>
+            <img src="./images/INFO30005 A2P2 Chatbot flow--unhappy-path-1.png" alt="Chatbot unhappy path 1, where the user is looking for items related to a hobby.">
+            <figcaption>(1) Chatbot unhappy path 1, where the user is looking for items related to a hobby.</figcaption>
+            <img src="./images/INFO30005 A2P2 Chatbot flow--unhappy-path-2.png" alt="Chatbot unhappy path 2, where the user responds to the list of items (given by the chatbot) for the hobby the user specified. Here the user is attempting to specify an item in the list.">
+            <figcaption>(2) Chatbot unhappy path 2, where the user responds to the list of items (given by the chatbot) for the hobby the user specified. Here the user is attempting to specify an item in the list.</figcaption>
+            <img src="./images/INFO30005 A2P2 Chatbot flow--unhappy-path-3.png" alt="Chatbot unhappy path 3, where the user responds to the list of items (given by the chatbot) for the hobby the user specified. Here the user is attempting to explain their use case for a more specific item recommendation.">
+            <figcaption>(3) Chatbot unhappy path 3, where the user responds to the list of items (given by the chatbot) for the hobby the user specified. Here the user is attempting to explain their use case for a more specific item recommendation.</figcaption>
+            <img src="./images/INFO30005 A2P2 Chatbot flow--unhappy-path-4.png" alt="Chatbot unhappy path 4, where the user asks a further question about an item in the library.">
+            <figcaption>(4) Chatbot unhappy path 4, where the user asks a further question about an item in the library.</figcaption>
+            <img src="./images/INFO30005 A2P2 Chatbot flow--unhappy-path-5--general.png" alt="General unhappy paths, where the user asks something out of scope and out of topic or when the user overloads an utterance with too much information.">
+            <figcaption>(5) General unhappy paths, where the user asks something out of scope and out of topic or when the user overloads an utterance with too much information.</figcaption>
+        </figure>
+
+        <h4>Voiceflow prototype testing and accessibility review</h4>
+        <p>Finally, feedback was collected as the chatbot was being prototyped by Jake in Voiceflow and from the accessibility review by Jesslyn. The accessibility review completed using a cognitive walkthrough from the perspective of the four given personas was done to ensure that the chatbot is accessible to people with disability. Although I created the final feedback grid graphic present in the document, Jesslyn and Jake were the authors of its content, so refer to their portfolios for more information on them. This was also when the important pivot of narrowing the chatbot role to the one present in the Voiceflow prototype happened; again, check their portfolios for more information on them.</p>
+
+        <figure>
+            <img src="./images/INFO30005 A2P2 Feedback grid--iteration3.png" alt="Feedback grid for the chatbot prototype and accessibility review. The content is beyond the scope of this portfolio; refer to Jake's and Jeslyn's portfolios for more information.">
+            <figcaption>Feedback grid summarising the feedback from the accessibility review and from the process of making the Vocieflow prototype. Content by Jesslyn and Jake. Design inspired by Jake's feedback grid designs from the previous part of this assignment.</figcaption>
+        </figure>
+
+        <h4 id="airtable-section">Mock item catalogue using Airtable</h4>
+        <p>For the chatbot prototype to work, it requires some sample items in the item catalogue to pull data from. This is when Jake suggested me to use ChatGPT to generate such mock catalogue. As I have not previously used AI extensively, he also guided me on how to do so, suggesting me to first start with the context, then the (clear) instructions, and end off with the output format we want. That is something I will keep in mind when writing prompts in the future!</p>
+
+        <p>The following was the prompt used to generate the mock catalogue that is on Airtable. For each practical hobby from the following list (generated by AI as well and courtesy of Jake), generate 3 items in the library, with the listed columns, which the AI will use when generating chatbot responses in conversations. There was another prompt later to fix issues with the 1-3 article list being delimited with commas which messed up the CSV too.</p>
+
+        <pre>
+We are creating a table of items available and their properties in a library of things, where users can borrow items for practical hobbies. We need to mock data for testing. Please generate a table based on the following properties: item name, item make/model, dimensions, accessibility features, hobbies using this item, the number available in the library (make this random number between 0 and 5), 1-3 made-up links to related articles, and a brief 1-sentence description of the item. Ensure there are 3 entries for each of the following hobbies:
+
+Photography
+Camping
+Gardening DIY/Home Improvement
+Sewing/Fabric Crafts
+Cooking/Baking
+Music (Learning an Instrument)
+Cycling
+3D Printing/Design
+Film/Video Making
+
+We're doing it in Airtable. Do it in CSV format.
+        </pre>
+
+        <figure>
+            <img src="./images/airtable-screenshot.png" alt="A screenshot of the table generated from the previous prompt on Airtable. The columns visible in this screenshot are ID, itemName, Item Make/Model, Dimensions, Accessibility Features, Hobbies Using This Item, NumberAvailable, and Related Articles.">
+            <figcaption>Screenshot of some entries in the Airtable base.</figcaption>
+        </figure>
+
+        <p>To get entries from this table in Voiceflow, I used a Dev API block to make a call to the Airtable API. I learnt how to do this through the tutorials provided by the teaching staff, but also through the Airtable API Docs. (Aside: The Airtable API Docs are dynamic, in which I mean it replaces values with our own base and tables, which I think is quite cool!) I only provided a simple example block in the prototype, while Jake built off that for the rest of the API calls in the Voiceflow prototype, as seen in a screenshot below where he also filtered table records instead of grabbing all entries.</p>
+
+        <p>It's nice to see some concepts from networking that I learnt in another subject COMP30023 Computer Systems that are applied here to make API calls! For example, we learnt about using <code>curl</code> to make HTTP GET requests to web servers.</p>
+
+        <figure>
+            <img src="./images/airtable-api-docs-screenshot.png" alt="A screenshot of the Airtable API Docs, showing example API calls to retrieve entries in our table, and sample responses from such API calls.">
+            <figcaption>Screenshot of the dynamic Airtable API Docs, where I learnt how to make API calls to the Airtable API.</figcaption>
+        </figure>
+        <figure>
+            <img src="./images/airtable-api-call-in-voiceflow.png" alt="A screenshot of a Dev API block in Voiceflow, with its headers set as instructed in the Airtable API Docs, and a filterByFormula paramater to only grab entries from the table that matches that filter.">
+            <figcaption>Sample Dev API block to make an API call to the Airtable API. This one is further developed by Jake to work with the rest of the Voiceflow prototype.</figcaption>
+        </figure>
+
+        <h3>Outcome</h3>
+        <p>The main/final outcome of this part of the assignment was a chatbot prototype made in Voiceflow, almost entirely by Jake. The prototype is embedded below, so feel free to experiment with it yourself! I also made a 3-minute video (as required by the assignment) going through the main “happy” path of the chatbot and some “unhappy” paths and edge cases the chatbot handles.</p>
+
+        <p>VOICEFLOW TO BE EMBEDDED HERE</p>
+
+        <p>VIDEO HERE (TO BE MADE)</p>
+
+        <h3>Challenges and growth</h3>
+        <p>There were various issues we encountered throughout the process, but one major one related to my contributions of compiling feedback is again deciding <em>what</em> to do with the feedback, but this time doing so in a <em>timely</em> manner. We often were afraid of cutting out the different possible roles the chatbot can take because we felt like they were good ideas worth keeping. As a result, design progress slowed as we kept all our doors open while pursuing none seriously. Effort was also wasted on chatbot roles that we didn't end up pursuing in the end, as we only had time to draft one.</p>
+        <blockquote>Design progress slowed as we kept all our doors open while pursuing none seriously.</blockquote>
+        <p>Thus to improve the efficiency of the design process in the future, we should strive to make decisions on what to do with the feedback as soon as possible from the time we collect and consolidate such feedback. We should also decide on the scope of the project as early as possible, instead of cutting down the scope in the last minute when we realise we can’t do it all, leading to a lot of wasted effort.</p>
     </main>
 </body>
 </html>

@@ -4,15 +4,52 @@
     font-style: normal;
     font-weight: 300 900;
 }
+@font-face {
+    font-family: "JetBrainsMono";
+    src: url("./JetBrainsMono-VariableFont_wght.ttf");
+    font-style: normal;
+    font-weight: 300 900;
+}
+
+/* Generated from https://www.joshwcomeau.com/shadow-palette/ */
+:root {
+  --shadow-color: 209deg 28% 61%;
+  --shadow-elevation-low:
+    0px 0.4px 0.5px hsl(var(--shadow-color) / 0.34),
+    0px 0.6px 0.7px -1.2px hsl(var(--shadow-color) / 0.34),
+    -0.1px 1.5px 1.7px -2.5px hsl(var(--shadow-color) / 0.34);
+  --shadow-elevation-medium:
+    0px 0.4px 0.5px hsl(var(--shadow-color) / 0.36),
+    -0.1px 1.3px 1.5px -0.8px hsl(var(--shadow-color) / 0.36),
+    -0.1px 3.2px 3.6px -1.7px hsl(var(--shadow-color) / 0.36),
+    -0.3px 7.7px 8.7px -2.5px hsl(var(--shadow-color) / 0.36);
+  --shadow-elevation-high:
+    0px 0.4px 0.5px hsl(var(--shadow-color) / 0.34),
+    -0.1px 2.3px 2.6px -0.4px hsl(var(--shadow-color) / 0.34),
+    -0.2px 4.2px 4.7px -0.7px hsl(var(--shadow-color) / 0.34),
+    -0.3px 6.9px 7.8px -1.1px hsl(var(--shadow-color) / 0.34),
+    -0.5px 11.1px 12.5px -1.4px hsl(var(--shadow-color) / 0.34),
+    -0.8px 17.3px 19.5px -1.8px hsl(var(--shadow-color) / 0.34),
+    -1.2px 26.3px 29.6px -2.1px hsl(var(--shadow-color) / 0.34),
+    -1.7px 38.7px 43.6px -2.5px hsl(var(--shadow-color) / 0.34);
+}
 
 * {
     box-sizing: border-box;
 }
 
+/* Thanks https://css-tricks.com/fixed-headers-on-page-links-and-overlapping-content-oh-my/ */
+html {
+    scroll-padding-top: 5rem;
+}
+
+/* Figure numbering from https://tympanus.net/codrops/2013/05/02/automatic-figure-numbering-with-css-counters/ */
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    counter-reset: figureCounter;
 }
 header, main {
     padding: 1em;
@@ -25,9 +62,19 @@ header {
 }
 main {
     max-width: 50em;
+    padding-bottom: 7em;
+
+    display: flex;
+    flex-direction: column;
 }
 header, ul {
     display: flex;
+}
+/* Thanks https://www.w3schools.com/Css/css_positioning.asp */
+header {
+    position: sticky;
+    top: 0;
+    box-shadow: var(--shadow-elevation-medium);
 }
 
 nav ul li:not(:first-child)::before {
@@ -38,15 +85,12 @@ h1, nav {
     align-self: center;
 }
 
-h1, h2, p, li, a {
+h1, h2, h3, h4, p, li, a, blockquote, figcaption {
     font-family: "Rubik";
     line-height: 1.5;
 }
-h2, p {
-    padding-bottom: .25em;
-}
 
-h1, h2 {
+h1, h2, h3, h4 {
     font-weight: bold;
 }
 h1 {
@@ -55,16 +99,113 @@ h1 {
 h2 {
     font-size: 2rem;
     padding-top: 1em;
+    padding-bottom: .25em;
+    line-height: 1.2;
+}
+h3 {
+    font-size: 1.5rem;
+    padding-top: .5em;
+}
+h4 {
+    font-size: 1.2rem;
+    padding-top: .5em;
+}
+p, blockquote {
+    padding-bottom: 1em;
+    padding-top: .5em;
+}
+figure {
+    padding: 2em 0;
+}
+.no-space-after {
+    padding-bottom: 0em;
 }
 a {
     color: dodgerblue;
     text-decoration: none;
 }
-h1 > a {
+h1 > a, blockquote {
     color: midnightblue;
 }
 a:hover {
     text-decoration: underline;
+}
+em {
+    font-style: italic;
+}
+b {
+    font-weight: bold;
+}
+blockquote {
+    text-align: center;
+    font-size: 2.1rem;
+    font-weight: bold;
+    /* font-style: italic; */
+}
+/* Thanks https://www.w3schools.com/CSS/css_list.asp */
+ul:not(nav > ul), ol {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em; /* thanks https://stackoverflow.com/questions/11737266/what-is-default-list-styling-css */
+}
+ul:not(nav > ul) {
+    list-style-type: disc;
+}
+ol {
+    list-style: decimal;
+}
+ul:not(li > ul):not(nav > ul), ol {
+    /* nested lists shouldn't have indents down there */
+    padding-bottom: 1em;
+}
+li:not(nav > ul > li) {
+    padding-bottom: .3em;
+}
+ul > li > ul {
+    /* add spacing before the nested list so it's all even */
+    padding-top: .3em;
+}
+
+figure, img {
+    width: 100%;
+}
+figure {
+    align-self: center;
+    counter-increment: figureCounter;
+}
+.small {
+    max-width: 30rem;
+}
+figcaption {
+    padding-top: .5em;
+}
+figcaption::before {
+    content: 'Figure ' counter(figureCounter) '. ';
+    font-style: italic;
+}
+
+pre, code {
+    font-family: "JetBrainsMono";
+    background-color: whitesmoke;
+}
+pre {
+    /* from https://stackoverflow.com/questions/248011/how-do-i-wrap-text-in-a-pre-tag */
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+    display: block;
+    width: 100%;
+
+    padding: 1.5em;
+    border-radius: 1em;
+    line-height: 1.2;
+}
+code {
+    padding: .1em .3em;
+    border-radius: .5em;
 }
 
 @media screen and (max-width: 500px) {
@@ -77,6 +218,12 @@ a:hover {
     }
     nav ul li:not(:last-child) {
         padding-bottom: .5em;
+    }
+    html {
+        scroll-padding-top: 7rem;
+    }
+    main {
+        padding-bottom: 3em;
     }
 }
 
