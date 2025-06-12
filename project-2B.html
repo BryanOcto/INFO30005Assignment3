@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project 2B | Bryan's INFO30005 Portfolio</title>
@@ -9,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1><a href="./index.html">Bryan's INFO30005 Portfolio</a></h1>
+        <h1 id="toc-1"><a href="./index.html">Bryan's INFO30005 Portfolio</a></h1>
         <nav>
             <ul>
                 <li><a href="./project-2A.html">Project 2A</a></li>
@@ -18,25 +16,45 @@
         </nav>
     </header>
     <main>
-        <h2>Project 2 Part 2:<br> "Hobby Master" Conversation Design Chatbot for a Library of Things</h2>
+        <h2 id="toc-2">Project 2 Part 2:<br> "Hobby Master" Conversation Design Chatbot for a Library of Things</h2>
         <p>A chatbot that assists users in getting to know items in the library of things (for practical hobbies) and how to use them.</p>
         <figure>
             <img src="./images/assignment-2-part-2-banner--edited.jpg" alt="Group members Nicholas, Bryan, and Jake (from left to right) discussing the themes of common chatbot roles we brainstormed.">
             <figcaption>Rapid prototyping of chatbot role ideas within the Library of Things service. Image courtesy of other group members.</figcaption>
         </figure>
 
-        <h3>Problem and context</h3>
+        <!-- Thanks https://stackoverflow.com/questions/58701499/semantic-markup-and-aria-attributes-for-table-of-contents -->
+        <nav class="toc">
+            <h3>Table of contents</h3>
+            <!-- ID's and this list generated using https://tools.solinventum.com/TocGenerator -->
+            <ul>
+                <li><a href="#toc-3">Problem and context</a></li>
+                <li><a href="#toc-4">Roles and contributions</a></li>
+                <li><a href="#toc-5">Design principles</a></li>
+                <li><a href="#toc-6">Key steps, decisions, and pivots</a></li>
+                <ul>
+                    <li><a href="#toc-7">Divergent thinking: Rapid prototyping</a></li>
+                    <li><a href="#toc-8">Conversation design: chatbot flow</a></li>
+                    <li><a href="#toc-9">Voiceflow prototype testing and accessibility review</a></li>
+                    <li><a href="#toc-10">Mock item catalogue using Airtable</a></li>
+                </ul>
+                <li><a href="#toc-11">Outcome</a></li>
+                <li><a href="#toc-12">Challenges and growth</a></li>
+            </ul>
+        </nav>
+
+        <h3 id="toc-3">Problem and context</h3>
         <p>Starting a new practical hobby can be very daunting due to not knowing where to start and the steep learning curve. Additionally, the busyness of university life for university students often leaves little time for practical hobbies.</p>
         <p>Many university students have desires to explore and do certain practical hobbies, whether for enjoyment or to connect with others (I am certainly one of them!). However, many hobbies take a long time to do, and it can be difficult to know where to start, due to how complicated and technical some practical hobbies can get (for example, photography). This results in university students not trying new practical hobbies (that is me too!), which not only can impact their wellbeing but also reduce opportunities to connect with like-minded people, as hobbies are often a medium to bond with others.</p>
         <p>Thus the second part of this assignment explores how a chatbot could help students get started with practical hobbies in the context of a Library of Things (LoT). Specifically, we explore how a chatbot could act as a digital “hobby master” discussed in the previous part of this assignment, helping students get to know about items in the library and how to use them. this way, students can start doing practical hobbies, and thus bond with others who have similar ones, potentially improving their wellbeing.</p>
         <blockquote>A chatbot in the Library of Things can familiarise students with the items in the library and how to use them, helping them get started with practical hobbies they've always wanted to do.</blockquote>
 
-        <h3>Roles and contributions</h3>
+        <h3 id="toc-4">Roles and contributions</h3>
         <ul>
             <li>
                 The team consisted of the following members:
                 <ul>
-                    <li>Bryan Susanto (Conversation designer, Feedback and conversation flow) <-- this is me!</li>
+                    <li>Bryan Susanto (Conversation designer, Feedback and conversation flow) &lt;-- this is me!</li>
                     <li>Nicholas Kurniasurja (Conversation designer, Persona design and conversation flow)</li>
                     <li>Jake De Andrade (Conversation designer, Voiceflow and Figma prototypes)</li>
                     <li>Jesslyn Andriono (Conversation designer, Accessibility review and conversation structure)</li>
@@ -48,17 +66,17 @@
         <p>Most of the design process was done collaboratively, however one particular aspect where I was the majority contributor was in collecting and synthesizing feedback, in particular using feedback grids to do that in the report. Although we ourselves are students and thus part of the target audience, we are likely to overlook several needs and impose our own biases from our preferences, and are likely to be more familiar with the idea and expected flow of the conversation compared to users. Thus it is important to collect and consolidate feedback so we can act upon it.</p>
         <p>I also created the mock item catalogue in Airtable for the chatbot to get item information from using the Airtable API in Voiceflow; more on that in <a href="#airtable-section">the corresponding section</a>.</p>
 
-        <h3>Design principles</h3>
+        <h3 id="toc-5">Design principles</h3>
         <p>The following design principles guided the design of this chatbot to assist in our library of things service:</p>
         <ul>
             <li><b>Iterative</b>: Conversations are very-open ended, thus it is very likely that the conversation that we envisioned deviates from what users expect. Therefore we performed many iterations as a team, gathering as much feedback as possible from others.</li>
             <li><b>Robust</b>: Despite not being able to cover every possible case of conversations due to their open-endedness, we must strive to design them to handle as many cases as possible and have a catch-all in the end or gracefully exit if the chatbot can't handle the case.</li>
         </ul>
 
-        <h3>Key steps, decisions, and pivots</h3>
+        <h3 id="toc-6">Key steps, decisions, and pivots</h3>
         <p>This section outlines the main stages and pivots our team took throughout the project as we iterate based on feedback. This only includes parts that I contributed to; for other steps please refer to the portfolios of other team members listed previously.</p>
 
-        <h4>Divergent thinking: Rapid prototyping</h4>
+        <h4 id="toc-7">Divergent thinking: Rapid prototyping</h4>
         <p>Before prototyping anything, the first step we must do is to decide what role the chatbot would play within the library of things service we designed in the previous assignment. We did this by brainstorming as many ideas as possible in a rapid-prototyping session, doing this individually to avoid ideas being overpowered by dominant voices in the conversation. Then, we grouped ideas based on common themes to identify the most common roles we brainstormed, and ranked them in an idea portfolio based on (positive) impact and feasibility. Two main ideas emerged, namely:</p>
         <ol>
             <li>The “hobby master” helping people use an item and/or finding items to borrow for a hobby.</li>
@@ -77,7 +95,7 @@
             <figcaption>Feedback grid summarising the feedback we received on our chatbot roles. Design inspired by Jake's feedback grid designs from the previous part of this assignment.</figcaption>
         </figure>
 
-        <h4>Conversation design: chatbot flow</h4>
+        <h4 id="toc-8">Conversation design: chatbot flow</h4>
         <p>With the role mostly decided, we started drafting out what the conversation between the chatbot and user could look like. We tested them with two Wizard of Oz tests with others, where we acted as the chatbot according to the script and others act as the users of the chatbot. This helps us identify whether the chatbot acts as the user expects or whether we were missing some steps in our conversation.</p>
         <p>Like before, I then compiled the feedback into a feedback grid. The main insight we got was how at the beginning of the conversation, users were confused at what the chatbot could do within the context of our library of things service. Thus, users suggested e.g. adding buttons as options on what the users can ask the chatbot, or some other way of informing the user of the capabilities of the chatbot.</p>
 
@@ -106,7 +124,7 @@
             <figcaption>(5) General unhappy paths, where the user asks something out of scope and out of topic or when the user overloads an utterance with too much information.</figcaption>
         </figure>
 
-        <h4>Voiceflow prototype testing and accessibility review</h4>
+        <h4 id="toc-9">Voiceflow prototype testing and accessibility review</h4>
         <p>Finally, feedback was collected as the chatbot was being prototyped by Jake in Voiceflow and from the accessibility review by Jesslyn. The accessibility review completed using a cognitive walkthrough from the perspective of the four given personas was done to ensure that the chatbot is accessible to people with disability. Although I created the final feedback grid graphic present in the document, Jesslyn and Jake were the authors of its content, so refer to their portfolios for more information on them. This was also when the important pivot of narrowing the chatbot role to the one present in the Voiceflow prototype happened; again, check their portfolios for more information on them.</p>
 
         <figure>
@@ -114,13 +132,12 @@
             <figcaption>Feedback grid summarising the feedback from the accessibility review and from the process of making the Vocieflow prototype. Content by Jesslyn and Jake. Design inspired by Jake's feedback grid designs from the previous part of this assignment.</figcaption>
         </figure>
 
-        <h4 id="airtable-section">Mock item catalogue using Airtable</h4>
+        <h4 id="toc-10">Mock item catalogue using Airtable</h4>
         <p>For the chatbot prototype to work, it requires some sample items in the item catalogue to pull data from. This is when Jake suggested me to use ChatGPT to generate such mock catalogue. As I have not previously used AI extensively, he also guided me on how to do so, suggesting me to first start with the context, then the (clear) instructions, and end off with the output format we want. That is something I will keep in mind when writing prompts in the future!</p>
 
         <p>The following was the prompt used to generate the mock catalogue that is on Airtable. For each practical hobby from the following list (generated by AI as well and courtesy of Jake), generate 3 items in the library, with the listed columns, which the AI will use when generating chatbot responses in conversations. There was another prompt later to fix issues with the 1-3 article list being delimited with commas which messed up the CSV too.</p>
 
-        <pre>
-We are creating a table of items available and their properties in a library of things, where users can borrow items for practical hobbies. We need to mock data for testing. Please generate a table based on the following properties: item name, item make/model, dimensions, accessibility features, hobbies using this item, the number available in the library (make this random number between 0 and 5), 1-3 made-up links to related articles, and a brief 1-sentence description of the item. Ensure there are 3 entries for each of the following hobbies:
+        <pre>We are creating a table of items available and their properties in a library of things, where users can borrow items for practical hobbies. We need to mock data for testing. Please generate a table based on the following properties: item name, item make/model, dimensions, accessibility features, hobbies using this item, the number available in the library (make this random number between 0 and 5), 1-3 made-up links to related articles, and a brief 1-sentence description of the item. Ensure there are 3 entries for each of the following hobbies:
 
 Photography
 Camping
@@ -153,17 +170,31 @@ We're doing it in Airtable. Do it in CSV format.
             <figcaption>Sample Dev API block to make an API call to the Airtable API. This one is further developed by Jake to work with the rest of the Voiceflow prototype.</figcaption>
         </figure>
 
-        <h3>Outcome</h3>
-        <p>The main/final outcome of this part of the assignment was a chatbot prototype made in Voiceflow, almost entirely by Jake. The prototype is embedded below, so feel free to experiment with it yourself! I also made a 3-minute video (as required by the assignment) going through the main “happy” path of the chatbot and some “unhappy” paths and edge cases the chatbot handles.</p>
+        <h3 id="toc-11">Outcome</h3>
+        <p>The main/final outcome of this part of the assignment was a chatbot prototype made in Voiceflow, almost entirely by Jake. You might have noticed that the prototype is embedded on this page on the bottom right corner, so feel free to experiment with it yourself! I also made a 3-minute video (as required by the assignment) going through the main “happy” path of the chatbot and some “unhappy” paths and edge cases the chatbot handles.</p>
 
-        <p>VOICEFLOW TO BE EMBEDDED HERE</p>
+        <div class="video-wrapper"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/HdzuJ2kVrTg?si=yq5djaXYxUZ7oqCI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
 
-        <p>VIDEO HERE (TO BE MADE)</p>
-
-        <h3>Challenges and growth</h3>
+        <h3 id="toc-12">Challenges and growth</h3>
         <p>There were various issues we encountered throughout the process, but one major one related to my contributions of compiling feedback is again deciding <em>what</em> to do with the feedback, but this time doing so in a <em>timely</em> manner. We often were afraid of cutting out the different possible roles the chatbot can take because we felt like they were good ideas worth keeping. As a result, design progress slowed as we kept all our doors open while pursuing none seriously. Effort was also wasted on chatbot roles that we didn't end up pursuing in the end, as we only had time to draft one.</p>
         <blockquote>Design progress slowed as we kept all our doors open while pursuing none seriously.</blockquote>
         <p>Thus to improve the efficiency of the design process in the future, we should strive to make decisions on what to do with the feedback as soon as possible from the time we collect and consolidate such feedback. We should also decide on the scope of the project as early as possible, instead of cutting down the scope in the last minute when we realise we can’t do it all, leading to a lot of wasted effort.</p>
     </main>
-</body>
-</html>
+    <!-- Voiceflow embed -->
+    <script type="text/javascript">
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+            window.voiceflow.chat.load({
+            verify: { projectID: '682fee0cb73d1bcb80474a70' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production',
+            voice: {
+                url: "https://runtime-api.voiceflow.com"
+            }
+            });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+    </script>
+</body></html>

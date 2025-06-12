@@ -58,7 +58,7 @@ header {
     width: 100%;
     justify-content: space-between;
     background-color: aliceblue;
-    border-bottom: .1em solid gainsboro;
+    border-bottom: .1em solid midnightblue;
 }
 main {
     max-width: 50em;
@@ -75,13 +75,14 @@ header {
     position: sticky;
     top: 0;
     box-shadow: var(--shadow-elevation-medium);
+    z-index: 100;
 }
 
-nav ul li:not(:first-child)::before {
+nav:not(.toc) ul li:not(:first-child)::before {
     content: "|";
     padding: 0 .5em;
 }
-h1, nav {
+h1, nav:not(.toc) {
     align-self: center;
 }
 
@@ -143,22 +144,22 @@ blockquote {
     /* font-style: italic; */
 }
 /* Thanks https://www.w3schools.com/CSS/css_list.asp */
-ul:not(nav > ul), ol {
+ul:not(nav > ul), nav.toc ul, ol {
     display: flex;
     flex-direction: column;
     padding-left: 1em; /* thanks https://stackoverflow.com/questions/11737266/what-is-default-list-styling-css */
 }
-ul:not(nav > ul) {
+ul:not(nav > ul), nav.toc ul {
     list-style-type: disc;
 }
 ol {
     list-style: decimal;
 }
-ul:not(li > ul):not(nav > ul), ol {
+ul:not(ul > ul):not(li > ul):not(nav > ul), nav.toc > ul, ol {
     /* nested lists shouldn't have indents down there */
     padding-bottom: 1em;
 }
-li:not(nav > ul > li) {
+li:not(nav > ul > li), nav.toc ul li {
     padding-bottom: .3em;
 }
 ul > li > ul {
@@ -208,8 +209,37 @@ code {
     border-radius: .5em;
 }
 
+/* Thanks https://stackoverflow.com/questions/60164596/how-to-embed-youtube-iframe-video-100-full-width */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* adapted from https://stackoverflow.com/questions/23072321/how-to-show-a-scaled-svg-in-pseudo-element and https://stackoverflow.com/questions/19255296/is-there-a-way-to-use-svg-as-content-in-a-pseudo-element-before-or-after */
+/* SVG from https://icon-sets.iconify.design/?query=external */
+a.external::after {
+    content: "";
+    background: url(./gridicons--external.svg);
+    background-size: contain;
+    width: 1em;
+    height: 1em;
+    margin-left: .3em;
+    margin-bottom: -.1em;
+    display: inline-block;
+}
+
 @media screen and (max-width: 500px) {
-    nav ul li:not(:first-child)::before {
+    nav:not(.toc) ul li:not(:first-child)::before {
         content: "";
         padding: 0;
     }
